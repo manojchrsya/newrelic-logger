@@ -1,0 +1,98 @@
+import { defineConfig, type OxlintConfig } from 'oxlint';
+
+export default defineConfig({
+  plugins: ['eslint', 'typescript', 'unicorn', 'import', 'oxc', 'vitest'],
+  env: {
+    node: true,
+    es2022: true,
+  },
+  options: {
+    typeAware: true,
+    typeCheck: true,
+  },
+  ignorePatterns: [
+    '*.min.*',
+    '**/node_modules/**',
+    '**/dist/**',
+    '**/build/**',
+    '**/*.d.ts',
+    'coverage/**',
+    'output/**',
+    'temp/**',
+    'package-lock.json',
+  ],
+  rules: {
+    curly: ['error', 'all'],
+    eqeqeq: ['error', 'always'],
+    'no-array-constructor': 'error',
+    'no-await-in-loop': 'off',
+    'unicorn/no-array-sort': 'off',
+    'no-caller': 'error',
+    'no-cond-assign': ['error', 'except-parens'],
+    'no-constant-condition': 'error',
+    'no-console': 'off',
+    'no-control-regex': 'error',
+    'no-debugger': 'error',
+    'no-duplicate-case': 'error',
+    'no-eval': 'error',
+    'no-ex-assign': 'error',
+    'no-extra-boolean-cast': 'error',
+    'no-fallthrough': 'error',
+    'no-inner-declarations': 'error',
+    'no-invalid-regexp': ['error', { allowConstructorFlags: ['u', 'y'] }],
+    'no-irregular-whitespace': 'error',
+    'no-new-wrappers': 'error',
+    'no-self-assign': 'error',
+    'no-self-compare': 'error',
+    'no-shadow': 'off',
+    'no-sparse-arrays': 'error',
+    'no-this-before-super': 'error',
+    'no-unreachable': 'error',
+    'no-unsafe-finally': 'error',
+    'no-unsafe-negation': 'error',
+    'no-with': 'error',
+    'use-isnan': 'error',
+    'valid-typeof': ['error', { requireStringLiterals: true }],
+    'typescript/consistent-type-imports': [
+      'error',
+      {
+        fixStyle: 'inline-type-imports',
+        disallowTypeAnnotations: false,
+      },
+    ],
+    'typescript/switch-exhaustiveness-check': 'off',
+    'unicorn/prefer-node-protocol': 'error',
+    'unicorn/filename-case': [
+      'error',
+      {
+        cases: {
+          camelCase: true,
+          pascalCase: true,
+          kebabCase: true,
+          snakeCase: true,
+        },
+        ignore: ['^[a-z]{2,3}-[A-Z]{2,3}(.test)?\\.(ts|js)$'],
+      },
+    ],
+    'unicorn/no-await-expression-member': 'error',
+    'unicorn/no-instanceof-builtins': 'error',
+    'unicorn/prefer-number-properties': 'error',
+    'typescript/no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
+    ],
+  },
+  overrides: [
+    {
+      files: ['**/*.{spec,test}.{ts,js}', '**/test/**', '**/__tests__/**'],
+      rules: {
+        'typescript/no-explicit-any': 'off',
+      },
+    },
+  ],
+}) as OxlintConfig;

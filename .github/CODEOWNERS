@@ -1,0 +1,6 @@
+# Every file requires review from the repo owner by default.
+* @manojchrsya
+
+# Workflow changes require explicit owner sign-off.
+.github/workflows/ @manojchrsya
+.github/CODEOWNERS @manojchrsya

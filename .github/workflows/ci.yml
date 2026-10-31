@@ -1,0 +1,65 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    strategy:
+      matrix:
+        node-version: [24.x]
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v6
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - name: Lint
+        if: matrix.node-version == '24.x'
+        run: npm run lint --if-present
+      - name: Build complete distribution
+        if: matrix.node-version == '24.x'
+        run: npm run build --if-present
+      - name: Build Node.js entry points on supported LTS lines
+        if: matrix.node-version != '24.x'
+        run: |
+          npm run build:cjs
+          npm run build:esm
+          npm run build:pkgjson
+          npm run build:cli
+      - name: Test complete compiled runtime
+        if: matrix.node-version == '24.x'
+        run: npm run test:runtime
+      - name: Test Node.js compiled runtime
+        if: matrix.node-version != '24.x'
+        run: npm run test:runtime -- --skip-umd
+      - name: Test packed npm artifact
+        if: matrix.node-version == '24.x'
+        run: npm run test:package
+      - run: npm test
+        env:
+          CI: true
+      - name: Build documentation
+        if: matrix.node-version == '24.x'
+        run: npm run docs:build
+      - name: Upload coverage to Codecov
+        if: matrix.node-version == '24.x'
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
