@@ -1,2 +1,1 @@
-export * from './src/ToWords';
-export type { OrdinalOptions } from './src/types';
+export * from './src/index';

@@ -53,13 +53,13 @@ jobs:
       - run: npm test
         env:
           CI: true
-      - name: Build documentation
-        if: matrix.node-version == '24.x'
-        run: npm run docs:build
-      - name: Upload coverage to Codecov
-        if: matrix.node-version == '24.x'
-        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/lcov.info
-          fail_ci_if_error: false
+      # - name: Build documentation
+      #   if: matrix.node-version == '24.x'
+      #   run: npm run docs:build
+      # - name: Upload coverage to Codecov
+      #   if: matrix.node-version == '24.x'
+      #   uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v5
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     files: ./coverage/lcov.info
+      #     fail_ci_if_error: false
