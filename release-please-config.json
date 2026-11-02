@@ -19,7 +19,7 @@
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
-      "package-name": "to-words"
+      "package-name": "newrelic-words"
     }
   }
 }
