@@ -1,7 +1,7 @@
 import * as https from 'node:https';
 import * as zlib from 'node:zlib';
 import * as os from 'node:os';
-import type { LogEntry, LogSink, Options } from './types';
+import type { LogEntry, LogSink, Options } from './types.js';
 
 const HOSTS = { US: 'log-api.newrelic.com', EU: 'log-api.eu.newrelic.com' } as const;
 const MAX_COMPRESSED_BYTES = 1_000_000; // New Relic Log API limit per payload

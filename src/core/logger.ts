@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { IncomingHttpHeaders, IncomingMessage, ServerResponse } from 'node:http';
-import { NewRelicClient } from './client';
-import type { LogLevel, LogSink, Options, RequestInfo } from './types';
+import { NewRelicClient } from './client.js';
+import type { LogLevel, LogSink, Options, RequestInfo } from './types.js';
 
 const DEFAULT_REDACT = [
   'authorization', 'cookie', 'set-cookie', 'x-api-key', 'password',

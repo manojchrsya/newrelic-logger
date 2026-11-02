@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
-import { RequestLogger } from '../core/logger';
-import type { Options, WithLogger } from '../core/types';
+import { RequestLogger } from '../core/logger.js';
+import type { Options, WithLogger } from '../core/types.js';
 
 /**
  * Plain Node `http` / `https` servers.

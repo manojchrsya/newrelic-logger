@@ -1,5 +1,5 @@
 import type { IncomingHttpHeaders, IncomingMessage, ServerResponse } from 'node:http';
-import type { RequestLogger } from './logger';
+import type { RequestLogger } from './logger.js';
 
 export type Region = 'US' | 'EU';
 export type LogLevel = 'info' | 'warn' | 'error';
