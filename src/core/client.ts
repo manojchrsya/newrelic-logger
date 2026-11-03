@@ -35,7 +35,7 @@ export class NewRelicClient implements LogSink {
   constructor(opts: Options = {}) {
     const apiKey = opts.apiKey || process.env.NEW_RELIC_LICENSE_KEY || process.env.NEW_RELIC_API_KEY;
     if (!apiKey) {
-      throw new Error('newrelic-logger: apiKey is required (or set NEW_RELIC_LICENSE_KEY)');
+      throw new Error('newrelic-transport: apiKey is required (or set NEW_RELIC_LICENSE_KEY)');
     }
     this.apiKey = apiKey;
     this.host = opts.host ?? HOSTS[opts.region ?? 'US'] ?? HOSTS.US;

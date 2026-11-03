@@ -4,8 +4,8 @@ import * as http from 'node:http';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const esm = await import('newrelic-logger');
-const cjs = require('newrelic-logger');
+const esm = await import('newrelic-transport');
+const cjs = require('newrelic-transport');
 
 function assertExports(label, pkg) {
   for (const name of ['expressMiddleware', 'fastifyPlugin', 'koaMiddleware', 'withRequestLogging', 'RequestLogger', 'NewRelicClient']) {
