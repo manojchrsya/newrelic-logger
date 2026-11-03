@@ -1,5 +1,5 @@
 {
-  "name": "newrelic-logger",
+  "name": "newrelic-transport",
   "version": "1.1.0",
   "description": "Drop-in HTTP request logger that ships request logs to New Relic (Express, Fastify, Koa, NestJS, plain http)",
   "keywords": [
@@ -13,14 +13,14 @@
     "typescript"
   ],
   "bugs": {
-    "url": "https://github.com/manojchrsya/newrelic-logger/issues"
+    "url": "https://github.com/manojchrsya/newrelic-transport/issues"
   },
-  "homepage": "https://github.com/manojchrsya/newrelic-logger#readme",
+  "homepage": "https://github.com/manojchrsya/newrelic-transport#readme",
   "license": "MIT",
   "author": "Manoj Chaurasiya",
   "repository": {
     "type": "git",
-    "url": "https://github.com/manojchrsya/newrelic-logger.git"
+    "url": "https://github.com/manojchrsya/newrelic-transport.git"
   },
   "files": [
     "dist/**/*"

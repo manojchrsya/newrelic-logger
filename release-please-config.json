@@ -19,7 +19,7 @@
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
-      "package-name": "newrelic-logger"
+      "package-name": "newrelic-transport"
     }
   }
 }

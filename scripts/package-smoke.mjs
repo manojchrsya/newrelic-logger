@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const packageJson = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'package.json'), 'utf8'));
-const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'newrelic-logger-package-smoke-'));
+const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'newrelic-transport-package-smoke-'));
 const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const tscCommand = path.join(
   repositoryRoot,

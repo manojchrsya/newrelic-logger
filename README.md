@@ -1,15 +1,15 @@
-# newrelic-logger
+# newrelic-transport
 
 Zero-dependency request logger that pushes HTTP request logs to the **New Relic Log API** (batched, gzipped, retried). Written in TypeScript; ships compiled CommonJS plus `.d.ts` types.
 
 ## Install
 ```bash
-npm i newrelic-logger
+npm i newrelic-transport
 ```
 
 ## Use
 ```ts
-import { expressMiddleware } from 'newrelic-logger';
+import { expressMiddleware } from 'newrelic-transport';
 app.use(expressMiddleware({ apiKey: process.env.NEW_RELIC_LICENSE_KEY, serviceName: 'my-api' }));
 ```
 
