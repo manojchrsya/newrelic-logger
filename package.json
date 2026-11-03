@@ -1,6 +1,6 @@
 {
   "name": "newrelic-logger",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Drop-in HTTP request logger that ships request logs to New Relic (Express, Fastify, Koa, NestJS, plain http)",
   "keywords": [
     "newrelic",
@@ -25,7 +25,9 @@
   "files": [
     "dist/**/*"
   ],
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
