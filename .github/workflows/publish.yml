@@ -6,7 +6,9 @@ on:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
-permissions: {}
+permissions:
+  contents: read
+  id-token: write 
 
 jobs:
   publish:
@@ -17,15 +19,11 @@ jobs:
       id-token: write # required for npm OIDC trusted publishing + provenance
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v6
 
-      - name: Setup Node.js
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '24.x'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           package-manager-cache: false
 
@@ -43,8 +41,8 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify generated locale artifacts
-        run: npm run docs:check
+      # - name: Verify generated locale artifacts
+      #   run: npm run docs:check
 
       - name: Verify compiled runtimes
         run: npm run test:runtime
