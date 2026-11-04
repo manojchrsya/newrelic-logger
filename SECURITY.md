@@ -1,21 +1,12 @@
 # Security Policy
 
-## Supported Versions
-
-| Version | Supported |
-| ------- | --------- |
-| 6.x     | ✅        |
-| < 6.0   | ❌        |
-
-Users on an unsupported major version should upgrade to the latest release to continue receiving security fixes.
-
 ## Reporting a Vulnerability
 
 **Please do NOT open a public GitHub issue for security vulnerabilities.**
 
 Use the private **GitHub Security Advisory** form instead:
 
-👉 [Report a vulnerability privately](https://github.com/mastermunj/to-words/security/advisories/new)
+👉 [Report a vulnerability privately](https://github.com/manojchrsya/newrelic-transport/security/advisories/new)
 
 We will:
 
