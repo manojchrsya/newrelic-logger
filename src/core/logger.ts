@@ -17,11 +17,11 @@ export interface TrackHooks {
 function sanitizeUrl(url: string, redact: Set<string>): string {
   const i = url.indexOf('?');
   if (i < 0) {return url;}
-  const params = new URLSearchParams(url.slice(i + 1));
-  for (const k of [...params.keys()]) {
-    if (redact.has(k.toLowerCase())) {params.set(k, '[REDACTED]');}
+  const redacted = new URLSearchParams();
+  for (const [key, value] of new URLSearchParams(url.slice(i + 1))) {
+    redacted.append(key, redact.has(key.toLowerCase()) ? '[REDACTED]' : value);
   }
-  return `${url.slice(0, i)}?${params.toString()}`;
+  return `${url.slice(0, i)}?${redacted.toString()}`;
 }
 
 function sanitizeHeaders(headers: IncomingHttpHeaders, redact: Set<string>): Record<string, unknown> {
