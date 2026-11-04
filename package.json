@@ -1,6 +1,6 @@
 {
   "name": "newrelic-transport",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Drop-in HTTP request logger that ships request logs to New Relic (Express, Fastify, Koa, NestJS, plain http)",
   "keywords": [
     "newrelic",
