@@ -267,18 +267,15 @@ GET /orders/42 200 12.34ms
 
 | Attribute | Description |
 |---|---|
-| `http.method` | HTTP method |
-| `http.url` | Full URL with the query string, after redaction |
-| `http.path` | Path without the query string |
-| `http.route` | Matched route pattern, such as `/orders/:id` (Express, Fastify, Koa with a router) |
-| `http.statusCode` | Response status code |
-| `http.durationMs` | Time from request start to response finish, in milliseconds |
-| `http.requestContentLength` | Request `Content-Length`, when present |
-| `http.responseContentLength` | Response `Content-Length`, when present |
-| `http.userAgent` | `User-Agent` header |
-| `http.clientIp` | First `x-forwarded-for` value, otherwise the socket address (Fastify uses `request.ip`) |
-| `http.aborted` | `true` if the client disconnected before the response finished |
-| `http.requestHeaders` | JSON string of request headers (only with `logHeaders: true`) |
+| `method` | HTTP method |
+| `url` | Full URL with the query string, after redaction |
+| `path` | Path without the query string |
+| `route` | Matched route pattern, such as `/orders/:id` (Express, Fastify, Koa with a router) |
+| `statusCode` | Response status code |
+| `durationMs` | Time from request start to response finish, in milliseconds |
+| `userAgent` | `User-Agent` header |
+| `clientIp` | First `x-forwarded-for` value, otherwise the socket address (Fastify uses `request.ip`) |
+| `requestHeaders` | JSON string of request headers (only with `logHeaders: true`) |
 | `requestId` | `x-request-id` header or a generated UUID |
 | `level` | `info` for 1xx to 3xx, `warn` for 4xx, `error` for 5xx |
 | `error.message`, `error.stack` | Present when an error was captured (Koa and Fastify) |
@@ -308,18 +305,18 @@ Logs appear under **Logs** in New Relic and can be queried with NRQL:
 ```sql
 -- Recent errors for one service
 SELECT * FROM Log
-WHERE service.name = 'orders-api' AND http.statusCode >= 500
+WHERE service.name = 'orders-api' AND statusCode >= 500
 SINCE 1 hour ago
 
 -- Error rate over time
-SELECT percentage(count(*), WHERE http.statusCode >= 500)
+SELECT percentage(count(*), WHERE statusCode >= 500)
 FROM Log WHERE service.name = 'orders-api'
 TIMESERIES SINCE 1 day ago
 
 -- 95th percentile latency per route
-SELECT percentile(http.durationMs, 95)
+SELECT percentile(durationMs, 95)
 FROM Log WHERE service.name = 'orders-api'
-FACET http.route SINCE 1 day ago
+FACET route SINCE 1 day ago
 
 -- Follow one request
 SELECT * FROM Log WHERE requestId = 'your-request-id'
